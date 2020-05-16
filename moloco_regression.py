@@ -65,7 +65,7 @@ dataDf2.plot(kind='scatter',x='varA',y= 'varB')
 plt.show()
 
 
-# In[57]:
+# In[90]:
 
 
 # None of the data looks very linearly distributed to me, though there are some sorts of underlying structures in terms of how the scatter
@@ -80,7 +80,7 @@ train = dataDf2[msk]
 test = dataDf2[~msk]
 
 
-# In[58]:
+# In[91]:
 
 
 # I then convert to numpy matrices and calculate the values of the beta coefficients, the estimated values and the correlation between
@@ -96,7 +96,7 @@ r = np.corrcoef(Y.T, yhat.T)
 r
 
 
-# In[59]:
+# In[92]:
 
 
 # The model has some predictive power. Let me see how it performs over the test set.
@@ -110,16 +110,16 @@ r = np.corrcoef(Ytest.T, yhattest.T)
 r
 
 
-# In[60]:
+# In[93]:
 
 
 # Performance of the model is relatively consistent. Let's plot the actual vs the estimates to see how they line up.
 
-plt.scatter(Y, yhat)
-plt.scatter(Ytest, yhattest)
+plt.scatter(x = Y, y = yhat)
+plt.scatter(x = Ytest, y = yhattest)
 
 
-# In[81]:
+# In[89]:
 
 
 # There is a broad linear trend but it's not a very strong one. I'm going to try some feature engineering. 
@@ -144,7 +144,7 @@ test = dataDf3[~msk]
 # In[83]:
 
 
-# Then we rebuild the model
+# Then we rebuild the model. Typically I would wrap this up into a function, but I won't right now as I'm still exploring what to do.
 
 X = train[['var1', 'varA','varB', 'varD']].values
 Y = train[['varC']].values
